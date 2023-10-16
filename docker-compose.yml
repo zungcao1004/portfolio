@@ -1,0 +1,13 @@
+services:
+  app:
+    image: portfolio:1
+    working_dir: /app
+    command: python3 -m http.server 8080
+    ports:
+      - "8080:8080" 
+
+  localtunnel:
+    image: efrecon/localtunnel
+    links:
+      - app
+    command: --local-host app --port 8080 --subdomain zc1004
